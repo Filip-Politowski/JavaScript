@@ -1,0 +1,56 @@
+body {
+
+    background-color: #cccccc;
+}
+
+h1 {
+    font-style: italic;
+    font-family: Serif;
+    font-size: 40px;
+}
+
+h2 {
+    font-style: Normal;
+    font-family: sans-serif;
+    font-size: 30px;
+}
+
+#mainDiv {
+    alignment: center;
+    height: 300px;
+    width: 400px;
+    text-align: center;
+
+
+}
+
+button {
+    background-color: brown;
+    border: none;
+    display: inline-block;
+    padding: 10px 24px;
+    transition-duration: 0.4s;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+#incrementButton {
+    background-color: green;
+    align-items: center;
+}
+#incrementButton:active{
+    background-color: black;
+}
+
+
+button:active {
+    transform: translateY(2px);
+    background-color: black;
+}
