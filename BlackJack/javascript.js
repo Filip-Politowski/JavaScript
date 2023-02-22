@@ -7,11 +7,14 @@ let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
 let isStarted = true
-let playerName = "Filip"
-let playerChips = 0
+
+let player = {
+    name: "Filip",
+    chips: 0
+}
 
 let playerEl = document.getElementById("player-el")
-playerEl.textContent = playerName + ": " + playerChips
+playerEl.textContent = player.name + ": $ " + player.chips
 
 function startGame() {
     if (isStarted === true) {
