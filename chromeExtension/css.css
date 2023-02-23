@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    color: darkgreen;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    box-sizing: border-box;
+    border: 1px solid darkgreen;
+    margin-bottom: 4px;
+
+}
+
+button {
+    color: white;
+    background: darkgreen;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+button:active {
+    transform: translateY(1px);
+    background-color: black;
+}
+
+#ul-el {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+    color: darkgreen;
+}
+
+#leads-list {
+    margin-top: 4px;
+}
+
+#leads-links {
+    color: darkgreen;
+}
