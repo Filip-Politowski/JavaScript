@@ -20,7 +20,6 @@ function renderLeads() {
     }
     ulEl.append(li)
 
-q
 }
 
 
