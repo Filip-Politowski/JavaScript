@@ -4,41 +4,54 @@ const inputBtn = document.getElementById("input-btn")
 const ulEl = document.getElementById("ul-el")
 const deleteButton = document.getElementById("delete-leads-btn")
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
-const welcomeEl = document.getElementById("welcome-el")
+const titleEl = document.getElementById("title-el")
 const tabButton = document.getElementById("tab-btn")
-let name = "Filip Politowski"
-let greeting = "Welcome back"
-let emoji = "🔥";
+const deleteLast = document.getElementById("delete-last")
+let text = "Materials to learn 📚"
+
 
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
+    title(text)
     render(myLeads)
 }
 
 function render(leads) {
     let listItems = ""
     for (let i = 0; i < leads.length; i++) {
-        listItems += `
-            <li>
+        if (leads[i].substring(0, 12) === "https://www.") {
+            listItems += `
+            <li id="leads-list">
                 <a id = "leads-links"target='_blank' href='${leads[i]}'>
                     ${leads[i]}
                 </a>
             </li>
         `
+        }
+        else {
+            listItems += `
+            <li id="leads-list">
+                <a id = "leads-links"target='_blank' href='https://www.${leads[i]}'>https://www.${leads[i]}
+                </a>
+            </li>
+        `
+        }
     }
     ulEl.innerHTML = listItems
-    greetUser(greeting, name, emoji)
 }
 
-function greetUser(greeting, name, emoji) {
-    welcomeEl.textContent = `${greeting}, ${name} ${emoji}`
+function title(text) {
+    titleEl.textContent = `${text}`
 }
 
 inputBtn.addEventListener("click", function () {
-    myLeads.push(inputEl.value)
-    inputEl.value = ""
-    localStorage.setItem("myLeads", JSON.stringify(myLeads))
-    render(myLeads)
+   if(inputEl.value !== "" && !myLeads.includes(inputEl.value)){
+       myLeads.push(inputEl.value)
+       inputEl.value = ""
+       localStorage.setItem("myLeads", JSON.stringify(myLeads))
+       render(myLeads)
+
+   }
 
 })
 
@@ -48,11 +61,21 @@ deleteButton.addEventListener("dblclick", function deleteAll() {
     myLeads = []
     render(myLeads)
 })
+
+deleteLast.addEventListener("click",function (){
+    myLeads = JSON.parse(localStorage.myLeads ?? "[]")
+    localStorage.myLeads = JSON.stringify(myLeads.slice(0,-1))
+    myLeads.pop()
+    render(myLeads)
+})
+
 tabButton.addEventListener("click", function () {
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-        myLeads.push(tabs[0].url)
-        localStorage.setItem("myLeads", JSON.stringify(myLeads))
-        render(myLeads)
+        if(!myLeads.includes(tabs[0].url)) {
+            myLeads.push(tabs[0].url)
+            localStorage.setItem("myLeads", JSON.stringify(myLeads))
+            render(myLeads)
+        }
     })
 })
 
