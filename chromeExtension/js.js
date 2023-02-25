@@ -19,7 +19,7 @@ if (leadsFromLocalStorage) {
 function render(leads) {
     let listItems = ""
     for (let i = 0; i < leads.length; i++) {
-        if (leads[i].substring(0, 12) === "https://www.") {
+        if (leads[i].substring(0, 12) === "https://www." || leads[i].substring(0,8)=== "https://") {
             listItems += `
             <li id="leads-list">
                 <a id = "leads-links"target='_blank' href='${leads[i]}'>
